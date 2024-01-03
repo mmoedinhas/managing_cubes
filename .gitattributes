@@ -1,0 +1,40 @@
+# Unreal maps and assets
+*.umap filter=lfs diff=lfs merge=binary -text lockable
+*.uasset filter=lfs diff=lfs merge=binary -text lockable
+# 3D mesh, textures, scene files
+*.fbx filter=lfs diff=lfs merge=lfs -text lockable
+*.obj filter=lfs diff=lfs merge=lfs -text lockable
+# 3D scene files
+*.lxo filter=lfs diff=lfs merge=lfs -text lockable
+*.mb filter=lfs diff=lfs merge=lfs -text lockable
+*.spp filter=lfs diff=lfs merge=lfs -text lockable
+# Images or textures
+*.png filter=lfs diff=lfs merge=lfs -text lockable
+*.tga filter=lfs diff=lfs merge=lfs -text lockable
+*.jpg filter=lfs diff=lfs merge=lfs -text lockable
+*.jpeg filter=lfs diff=lfs merge=lfs -text lockable
+*.ico filter=lfs diff=lfs merge=lfs -text lockable
+*.gif filter=lfs diff=lfs merge=lfs -text lockable
+*.hdf filter=lfs diff=lfs merge=lfs -text lockable
+*.pgm filter=lfs diff=lfs merge=lfs -text lockable
+*.tif filter=lfs diff=lfs merge=lfs -text lockable
+# Compiled data
+*.dll filter=lfs diff=lfs merge=lfs -text lockable
+*.exe filter=lfs diff=lfs merge=lfs -text lockable
+*.lib filter=lfs diff=lfs merge=lfs -text lockable
+*.pdb filter=lfs diff=lfs merge=lfs -text lockable
+*.so filter=lfs diff=lfs merge=lfs -text lockable
+*.jar filter=lfs diff=lfs merge=lfs -text lockable
+# Compressed files
+*.zip filter=lfs diff=lfs merge=lfs -text lockable
+*.7z filter=lfs diff=lfs merge=lfs -text lockable
+*.rar filter=lfs diff=lfs merge=lfs -text lockable
+# Other
+*.pdf filter=lfs diff=lfs merge=lfs -text lockable
+*.mkv filter=lfs diff=lfs merge=lfs -text lockable
+*.mp4 filter=lfs diff=lfs merge=lfs -text lockable
+#cesium offline splitted zips
+Hydra/Plugins/Assets/ArmadaFleetAssets/Content/GeoServerData/GlobeTerrain500m/*.zip.*  filter=lfs diff=lfs merge=lfs -text
+t_waves3_fx.uasset filter=lfs diff=lfs merge=lfs -text
+t_waves3_n.uasset filter=lfs diff=lfs merge=lfs -text
+WaterPlane_RT.uasset filter=lfs diff=lfs merge=lfs -text
