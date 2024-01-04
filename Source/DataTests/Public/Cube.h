@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -10,17 +8,29 @@ UCLASS()
 class DATATESTS_API ACube : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
 	ACube();
 
+public:
+	virtual void Tick(float DeltaSeconds) override;
+
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FLinearColor Color;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector Position;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FRotator Rotation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=1, ClampMax=100))
+	double Scale;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateColor();
+
+private:
+	UPROPERTY()
+	FLinearColor PrevColor;
 };
