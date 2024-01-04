@@ -14,10 +14,13 @@ class DATATESTS_API UCubeManager : public UWorldSubsystem
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(BlueprintReadWrite)
-	ACube* CurrentCube;
+	UFUNCTION(BlueprintCallable)
+	void SetCurrentCube(ACube* NewCurrentCube);
 
 	UPROPERTY(BlueprintAssignable)
 	FOnNewCubeSelected OnNewCubeSelected;
-	
+
+protected:
+	UPROPERTY(BlueprintReadOnly)
+	ACube* CurrentCube;
 };
