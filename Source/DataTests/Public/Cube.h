@@ -18,14 +18,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FLinearColor Color;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector Position;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FRotator Rotation;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=1, ClampMax=100))
 	double Scale;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsCyclingColors;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateColor();
@@ -33,4 +30,6 @@ protected:
 private:
 	UPROPERTY()
 	FLinearColor PrevColor;
+
+	void GetNextColor();
 };
