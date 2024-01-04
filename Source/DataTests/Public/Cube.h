@@ -14,25 +14,24 @@ class DATATESTS_API ACube : public AActor
 public:
 	virtual void Tick(float DeltaSeconds) override;
 
-protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText CubeName;
+	const FGuid& GetId() const;
+
+	UPROPERTY(EditAnywhere)
+	FText StartingName;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FLinearColor Color;
+	UPROPERTY(EditAnywhere)
+	FLinearColor StartingColor;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=1, ClampMax=100))
-	double Scale;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bIsCyclingColors;
-
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FGuid CubeId;
+	
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateColor();
+	
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY()
 	FLinearColor PrevColor;
-
-	void GetNextColor();
 };

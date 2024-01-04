@@ -1,6 +1,8 @@
 #include "Cube.h"
 
-ACube::ACube() : Color(0,0,0,1), Scale(1.0), bIsCyclingColors(false), PrevColor(0,0,0,0)
+#include "CubeManager.h"
+
+ACube::ACube() : StartingColor(0,0,0,1), PrevColor(0,0,0,0)
 {
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -9,41 +11,35 @@ void ACube::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if(bIsCyclingColors)
+	UCubeManager* CubeManager = GetWorld()->GetSubsystem<UCubeManager>();
+	FCubeData CubeData;
+	if(!CubeManager->GetCubeData(CubeId, CubeData))
 	{
-		GetNextColor();
+		CubeManager->RegisterNewCube(this);
 	}
 
-	if(PrevColor != Color)
+	if(CubeData.bIsCyclingColors)
+	{
+		CubeManager->SetCubeNextColor(CubeId);
+	}
+
+	if(PrevColor != CubeData.Color)
 	{
 		UpdateColor();
-		PrevColor = Color;
+		PrevColor = CubeData.Color;
 	}
 	
-	SetActorRelativeScale3D(FVector(Scale, Scale, Scale));
+	SetActorRelativeScale3D(FVector(CubeData.Scale, CubeData.Scale, CubeData.Scale));
 }
 
-void ACube::GetNextColor()
+const FGuid& ACube::GetId() const
 {
-	int Blue = Color.B * 255;
-	int Red = Color.R * 255;
-	int Green = Color.G * 255;
+	return CubeId;
+}
 
-	Blue = Blue + 15;
-	if(Blue > 255)
-	{
-		Blue = 0;
-		Green = Green + 15;
-		if(Green > 255)
-		{
-			Green = 0;
-			Red = Red + 15;
-			if(Red > 255)
-			{
-				Red = 0;
-			}
-		}
-	}
-
-	Color = FLinearColor(Red / 255.0,Green / 255.0,Blue / 255.0);
+void ACube::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	GetWorld()->GetSubsystem<UCubeManager>()->RegisterNewCube(this);
 }
