@@ -52,6 +52,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void DestroyCube(ACube* Cube);
+
+	UFUNCTION(BlueprintCallable)
+	void SetCubeData(FGuid CubeId, FCubeData CubeData);
 	
 	void SetCubeNextColor(FGuid CubeId);
 

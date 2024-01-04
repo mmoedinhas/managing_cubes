@@ -78,6 +78,11 @@ void UCubeManager::DestroyCube(ACube* Cube)
 	Cube->Destroy();
 }
 
+void UCubeManager::SetCubeData(FGuid CubeId, FCubeData CubeData)
+{
+	CubesData.Add(CubeId, CubeData);
+}
+
 void UCubeManager::SetCubeNextColor(FGuid CubeId)
 {
 	if(FCubeData* CubeData = CubesData.Find(CubeId))
