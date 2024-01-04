@@ -16,6 +16,9 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText CubeName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FLinearColor Color;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=1, ClampMax=100))

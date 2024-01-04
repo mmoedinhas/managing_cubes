@@ -1,6 +1,6 @@
 #include "Cube.h"
 
-ACube::ACube() : Color(0,0,0,1), Scale(1.0), PrevColor(0,0,0,0), bIsCyclingColors(false)
+ACube::ACube() : Color(0,0,0,1), Scale(1.0), bIsCyclingColors(false), PrevColor(0,0,0,0)
 {
 	PrimaryActorTick.bCanEverTick = true;
 }
